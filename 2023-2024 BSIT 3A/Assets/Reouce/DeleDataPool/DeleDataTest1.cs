@@ -4,11 +4,25 @@ using UnityEngine;
 
 public class DeleDataTest1 : MonoBehaviour {
 
-    public delegate void OnClickResponse ();
-    public OnClickResponse OnClick = delegate {
-    };
+    [SerializeField]
+    private int Life = 10;
+    [SerializeField]
+    private SpriteRenderer _Sprite;
 
-    private void OnMouseDown () {
-        OnClick?.Invoke ();
+    private void OnTriggerEnter2D (Collider2D collision) {
+        Life--;
+
+        if (Life <= 0) {
+            _Sprite.color = Color.red;
+        }
     }
+
+    private void OnTriggerStay2D (Collider2D collision) {
+        
+    }
+
+    private void OnTriggerExit2D (Collider2D collision) {
+        
+    }
+
 }

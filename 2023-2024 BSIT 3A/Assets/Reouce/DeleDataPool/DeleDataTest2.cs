@@ -38,16 +38,4 @@ public class DeleDataTest2 : MonoBehaviour {
         IntDict["strength"] = 4;
     }
 
-    private void OnEnable () {
-        _Button.OnClick += OnClickParentRespond;
-    }
-
-    private void OnDisable () {
-        _Button.OnClick -= OnClickParentRespond;
-    }
-
-    private void OnClickParentRespond () {
-        Debug.Log ("PARENT!!!");
-    }
-
 }

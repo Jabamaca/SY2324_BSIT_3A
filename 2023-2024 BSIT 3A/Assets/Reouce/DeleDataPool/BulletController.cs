@@ -8,17 +8,32 @@ public class BulletController : MonoBehaviour {
     public OnPoolDelegate OnPool = delegate {
     };
 
+    [SerializeField]
+    private Rigidbody2D _RigidBody;
+
     public float Lifetime = 3f;
     private float _CurrentTime = 0f;
 
     public float Speed = 4f;
+
+    private void OnCollisionEnter2D (Collision2D collision) {
+        PoolObject ();
+    }
+
+    private void OnCollisionStay2D (Collision2D collision) {
+        
+    }
+
+    private void OnCollisionExit2D (Collision2D collision) {
+        
+    }
 
     // Update is called once per frame
     void Update () {
         float t = Time.deltaTime;
 
         _CurrentTime += t;
-        transform.position += new Vector3 (Speed * t, 0, 0);
+        _RigidBody.velocity = new Vector2 (Speed, 0f);
 
         if (_CurrentTime >= Lifetime) {
             PoolObject ();
